@@ -5,7 +5,7 @@ import { NotesProvider } from "@/utils/ContextProvider";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NotesProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </NotesProvider>
   )
 }

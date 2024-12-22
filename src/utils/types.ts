@@ -22,3 +22,9 @@ export type Tag = {
     label: string;
     id: string;
 };
+
+export type CardProps = {
+    title: string;
+    tags: Tag[];
+    id: string;
+}

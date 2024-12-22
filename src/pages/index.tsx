@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import { NoteList } from "@/components/NoteList";
+import { useNotes } from "@/utils/ContextProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const { tags, notesWithTags } = useNotes();
   return <>
     <Head>
       <title>Typescript Markdown app</title>
@@ -24,11 +26,12 @@ export default function Home() {
     {/* <div
       className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
     > */}
-    <div>
-      <main className={styles.main}>
-        <div>Hi</div>
-        <NoteList />
-      </main>
+    <div style={{ height: "100vh" }}>
+      {/* <main className={styles.main}> */}
+      <div>Hi</div>
+      <NoteList availableTags={tags} notes={notesWithTags} />
+
+      {/* </main> */}
     </div>
   </>
 }

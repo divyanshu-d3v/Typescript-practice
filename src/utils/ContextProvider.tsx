@@ -2,12 +2,13 @@ import React, { createContext, useContext, useMemo } from "react";
 // import NoteForm from "@/components/NoteForm";
 import { useSessionStorage } from "@/components/useSessionStorage";
 import { v4 as uuidV4 } from "uuid";
-import { NoteData, RawNote, Tag } from "@/utils/types";
+import { NoteData, RawNote, Tag, CardProps } from "@/utils/types";
 
 type NotesContextType = {
     notes: RawNote[];
     tags: Tag[];
-    notesWithTags: RawNote[];
+    // notesWithTags: RawNote[];
+    notesWithTags: CardProps[];
     onCreateNote: (data: NoteData) => void;
     onUpdateNote: (id: string, data: NoteData) => void;
     onDeleteNote: (id: string) => void;
