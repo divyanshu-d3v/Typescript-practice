@@ -1,36 +1,12 @@
 import React, { useMemo } from "react";
 import NoteForm from "@/components/NoteForm";
 import { useSessionStorage } from "@/components/useSessionStorage";
-
-export type NoteData = {
-    title: string;
-    body: string;
-    tags: Tag[];
-};
-
-export type Note = NoteData & {
-    id: string;
-};
-
-export type RawNoteData = {
-    title: string;
-    body: string;
-    tagIds: string[];
-};
-
-export type RawNote = {
-    id: string;
-} & RawNoteData;
-
-export type Tag = {
-    label: string;
-    id: string;
-};
-
+import { v4 as uuidV4 } from "uuid";
+import { NoteData, Note, RawNoteData, RawNote, Tag } from "@/utils/types";
+import { useNotes } from "@/utils/ContextProvider";
 
 const New = () => {
-    const [notes, setNotes] = useSessionStorage<RawNote[]>('NOTES', []); //We will pass an array of rawNote type to store in storage
-    const [tags, setTags] = useSessionStorage<Tag[]>('TAGS', []);
+    const { notes, setNotes, tags, setTags, addTag, updateTag, deleteTag, onCreateNote, onUpdateNote, onDeleteNote } = useNotes();
 
     const notesWithTags = useMemo(() => {
         return notes.map((note) => {
@@ -38,10 +14,11 @@ const New = () => {
         })
     }, [notes, tags])
 
+
     return (
         <div>
             <h1>New Note</h1>
-            <NoteForm />
+            <NoteForm onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />
         </div>
     )
 }

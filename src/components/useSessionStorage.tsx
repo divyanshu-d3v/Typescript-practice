@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 
 export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
     const [value, setValue] = useState<T>(() => {
-        const jsonValue = localStorage.getItem(key)
+        if (typeof window === "undefined") return initialValue;
+        const jsonValue = window.sessionStorage.getItem(key);
         if (jsonValue == null) {
             if (typeof initialValue === "function") {
                 return (initialValue as () => T)()
@@ -15,7 +16,7 @@ export function useSessionStorage<T>(key: string, initialValue: T | (() => T)) {
     })
 
     useEffect(() => {
-        sessionStorage.setItem(key, JSON.stringify(value))
+        window.sessionStorage.setItem(key, JSON.stringify(value))
     }, [value, key])
 
     return [value, setValue] as [T, typeof setValue]
