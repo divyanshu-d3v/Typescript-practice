@@ -29,7 +29,6 @@ export default function Home() {
         <main className={styles.main}>
           <div>Hi</div>
         </main>
-
       </div>
     </>
   );
