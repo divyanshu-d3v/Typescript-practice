@@ -1,0 +1,67 @@
+.container {
+    width: 50%;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    height: 85vh;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.top_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.top_right_container {
+    display: flex;
+    gap: 1rem;
+}
+
+.buttons {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.create {
+    background-color: #3081D0;
+    color: #fff;
+    font-weight: 600;
+}
+
+.form_container {
+    display: flex;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 20px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    width: 100%;
+}
+
+.tag_container {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 20px;
+}
+
+.select_list {
+    outline: none;
+}
+
+.note_card_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0
+}

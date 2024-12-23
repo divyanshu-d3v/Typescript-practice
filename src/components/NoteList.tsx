@@ -30,19 +30,19 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
     }, [title, selectedTags, notes])
 
     return (
-        <>
+        <div className={styles.container}>
             <div>
                 <div className={styles.top_container}>
-                    <h1>Notes</h1>
+                    <h1 style={{ color: "#3081D0" }}>Notes</h1>
                     <div className={styles.top_right_container}>
                         <Link href="/new">
-                            <button>Create</button>
+                            <button className={`${styles.buttons} ${styles.create}`}>Create</button>
                         </Link>
-                        <button>Edit Tags</button>
+                        <button className={`${styles.buttons} ${styles.edit}`}>Edit Tags</button>
                     </div>
                 </div>
-                <form>
-                    <input type="text" name="noteTitle" id="noteTitle" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                <form className={styles.form_container}>
+                    <input type="text" name="noteTitle" id="noteTitle" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required className={styles.title} />
                     <div className={styles.tag_container}>
                         <Select
                             value={selectedTags.map(tag => {
@@ -59,17 +59,18 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
                                 )
                             }}
                             isMulti
+                            className={styles.select_list}
                         />
                     </div>
                 </form>
             </div>
-            <div>
+            <div className={styles.note_card_grid}>
                 {filteredNotes.map(note => (
                     <div key={note.id}>
                         <NoteCard id={note.id} title={note.title} tags={note.tags} />
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }

@@ -37,7 +37,7 @@ const NoteForm = ({ onSubmit, onAddTag, availableTags }: NoteFormProps) => {
         <form onSubmit={handleSubmit}>
             <div className={styles.title_tag_container}>
                 {/* <div className={styles.title_container}> */}
-                <input type="text" name="noteTitle" id="noteTitle" placeholder="Title" ref={titleRef} required />
+                <input type="text" name="noteTitle" id="noteTitle" className={styles.input_title} placeholder="Title" ref={titleRef} required />
                 {/* </div> */}
                 <div className={styles.tag_container}>
                     {/* React select expects data in the form of {label:... , value:...} */}
@@ -64,8 +64,8 @@ const NoteForm = ({ onSubmit, onAddTag, availableTags }: NoteFormProps) => {
                     />
                 </div>
             </div>
-            <p>Body</p>
-            <textarea rows={30} cols={100} ref={markdownRef} required />
+            <div style={{ fontSize: "24px", fontWeight: 500, color: "#444", marginTop: "15px" }}>Body</div>
+            <textarea rows={30} cols={100} ref={markdownRef} required className={styles.text_area} />
             <div className={styles.button_container}>
                 <button type="submit" className={`${styles.save_button} ${styles.form_button}`}>Save</button>
                 <button type="button" className={`${styles.cancel_button} ${styles.form_button}`} onClick={handleCancel}>Cancel</button>

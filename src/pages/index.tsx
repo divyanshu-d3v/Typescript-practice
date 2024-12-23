@@ -24,14 +24,11 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     {/* <div
-      className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     > */}
     <div style={{ height: "100vh" }}>
-      {/* <main className={styles.main}> */}
-      <div>Hi</div>
       <NoteList availableTags={tags} notes={notesWithTags} />
-
-      {/* </main> */}
     </div>
+    {/* </div > */}
   </>
 }
